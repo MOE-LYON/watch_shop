@@ -1,57 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
+﻿<%@ Page Language="C#" Title="首页" MasterPageFile="~/Base.master" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>首页</title>
-    <link rel="stylesheet" href="./style/index.css">
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+    <asp:Content ID="Content1" ContentPlaceHolderId="head" runat="server">
+        <link rel="stylesheet" href="./style/index.css">
+        <script>
         $(function () {
             $(".item").click(function () {
                 let id = $(this).find(".watch_id").val();
                 window.location.href = "/detail.aspx?Id=" + id;
-            })
+            });
+            function getQueryString(name) { var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); var r = window.location.search.substr(1).match(reg); if (r != null) return unescape(r[2]); return null; }
+            $(".active").removeClass("active");
+            let page = getQueryString("page") || 1;
+            $(".page a").eq(page).addClass("active");
         })
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div id="app">
-        <header>
-            <div class="container flex">
-                <div class="flex">
-                    <div class="logo">
-                        <a href="index.aspx">
-                    <img src="./images/logo.jpg" alt="">
-                            </a>
-                    </div>
-                    <ul class="flex">
-                        <li>
-                            <a href="index.aspx?cid=1">潜航者型</a>
-                        </li><li>
-                            <a href="index.aspx?cid=2">超级复杂功能计时</a>
-                        </li><li>
-                            <a href="index.aspx?cid=3">电子系列</a>
-                        </li>
-                        <li>
-                            <a href="index.aspx?cid=0">其他</a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="user">
-                    <a href="/login">登入</a>
-                    <a href="/resginser">注册</a>
-                    <a href="/shopcart">购物车(0)</a>
-                </div>
-            </div>
+    </asp:Content>
 
-        </header>
+
+        <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div class="banner">
             <img src="/images/banner1.jpg" />
         </div>
@@ -144,27 +110,4 @@
                 })
             </script>
         </div>
-        <footer>
-            <div class="intro">
-                <ul>
-                    <li>正品保证</li>
-                    <li>个性定制</li>
-                    <li>全场免邮</li>
-                    <li>积分商城</li>
-                    <li>专业售后</li>
-                </ul>
-            </div>
-            <div class="zixun">
-                <p>咨询电话
-                    400-123-4567
-                    周一到周日9:00 - 18:00
-                    （国定假日除外）</p>
-                <p>在线客服
-                    周一到周日9:00 - 21:00
-                    （国定假日除外）</p>
-            </div>
-        </footer>
-    </div>
-    </form>
-</body>
-</html>
+        </asp:Content>

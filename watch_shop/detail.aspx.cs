@@ -23,6 +23,7 @@ public partial class detail : System.Web.UI.Page
         watch_photo.ImageUrl = string.Format("~/images/{0}", watch.Photo);
         watch_price.Text = watch.Price.ToString();
         watch_title.InnerText = watch.Name;
+        watch_id.Value = watch.Id.ToString();
         var price = watch.Price.ToString();
         watch_credit.Text = price.Substring(0,price.Length-3);
     }
