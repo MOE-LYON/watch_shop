@@ -38,8 +38,13 @@
                 </div>
                 
                 <div class="user">
-                    <a href="/login">登入</a>
+                    <span id="islogin" runat="server">
+                    <a href="/Login.aspx">登入</a>
                     <a href="/resginser">注册</a>
+                        </span>
+                    <span id="user_view" runat="server">
+                        <a href="user.aspx" id="user_name" runat="server"></a>
+                    </span>
                     <a href="/cart.aspx">购物车(<span id="cartnum" runat="server"></span>)</a>
                 </div>
             </div>

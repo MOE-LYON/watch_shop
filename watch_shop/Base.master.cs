@@ -18,6 +18,17 @@ public partial class Base : System.Web.UI.MasterPage
         {
             cartnum.InnerText = "0";
         }
-        
+        Customer customer = Session["user"] as Customer;
+        if (customer != null)
+        {
+            islogin.Visible = false;
+            user_view.Visible = true;
+            user_name.InnerText = customer.Name;
+        }
+        else
+        {
+            islogin.Visible = true;
+            user_view.Visible = false;
+        }
     }
 }
