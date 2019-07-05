@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="./style/order.css">
     <style>
+
         .addrs {
             display: flex;
             flex-wrap: wrap;
@@ -19,6 +20,20 @@
 
         .active {
             border: 2px solid orange;
+        .addrs{
+            display:flex;
+            flex-wrap:wrap;
+            align-content:center;
+            justify-content:center;
+        }
+        .address{
+            width:170px;
+            margin:10px;
+            border:2px solid #ccc;
+            cursor:pointer;
+        }
+        .active{
+            border:2px solid orange;
         }
     </style>
     <script>
@@ -26,7 +41,6 @@
             $(".address").eq(0).addClass("active");
             $(".address").hide();
             $(".address").click(function () {
-
                 $(".active").removeClass("active");
                 $(this).addClass("active");
                 $(this).siblings(".address").fadeOut();
@@ -40,13 +54,18 @@
     </script>
     <script src="admin/lib/layui/layui.js"></script>
     </asp:Content>
-
+                $(".address").show();
+            })
+        })
+    </script>
+</asp:Content>
     <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
         <div class="container">
             <div class="main">
                 <div class="order">
                     <div class="top">
-                        <h1 class="center" style="color: #dd98bb;">CHECKOUT</h1>
+                        <h1 class="center" style="color:#dd98bb;">CHECKOUT</h1>
+
                     </div>
                     <div class="con flex">
                         <div class="left">
@@ -55,16 +74,17 @@
                                     <h1>收获地址</h1>
                                     <span class="choose">从收件地址列表中选择</span>
                                     <div class="addrs">
-                                        <asp:Repeater ID="address_list" runat="server">
-                                            <itemtemplate>
+                                    <asp:Repeater ID="address_list" runat="server">
+                                        <ItemTemplate>
+
                                             <div class="address">
                                                 <h3><%# Eval("Name") %></h3>
                                                 <span><%# Eval("Phone") %></span>
                                                 <p><%# Eval("Addr") %></p>
                                             </div>
-                                        </itemtemplate>
-                                        </asp:Repeater>
-                                    </div>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                        </div>
                                 </div>
                                 <div class="billing-address">
                                     <div class="form-row">
