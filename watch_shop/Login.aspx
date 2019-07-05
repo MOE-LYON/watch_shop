@@ -13,11 +13,12 @@
                 let User = $(".User").val().trim();
                 let Password = $(".Password").val().trim();
                 let tip = $(".res");
+                let checkcode = $(".checkcode").val().trim();
                 $.ajax({
                     type: "get",
                     url: "/api/Login.ashx",
                     data: {
-                        User, Password
+                        User, Password, checkcode
                     },
                     success: function (res) {
                         if (res == "success") {
@@ -26,7 +27,7 @@
                                 window.location.href = "/index.aspx";
                             },2000)
                         } else {
-                            tip.html("登入失败");
+                            tip.html(res);
                         }
                     }
                 });
@@ -49,8 +50,19 @@
 				<td><input id="email" type="text" name="email" class="User" placeholder="账户" value="admin" tabindex="1"></td>
 			</tr>
 			<tr>
-				<td><input type="password" name="password" class="Password" placeholder="密码" value="admin" tabindex="2"></td>
+				<td><input type="password" name="password" class="Password" placeholder="密码" value="" tabindex="2"></td>
 			</tr>
+                <tr>
+                    <td>
+                        <input name="password" lay-verify="code" placeholder="验证码" class="checkcode" type="text" class="layui-input">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         <img src="/api/CheckCode.ashx" alt="" style="width: 55px; height: 30px;" title='看不清楚，双击图片换一张。' ondblclick="this.src = '/api/CheckCode.ashx?flag=' + Math.random()" border="1" />
+            
+                    </td>
+                </tr>
 			<tr>
 				<td class="remember-me-td">
 					<label class="remember-me" for="remember_me"><input type="checkbox" id="remember_me" tabindex="3" name="data[remember]" value="1" />记住帐号</label><span class="forgot-pass"><a href="/auth/password-recovery" class="" tabindex="5">忘记密码?</a></span>
@@ -67,7 +79,7 @@
             <div ><p class="res" ></p></div>
 		</div>
 			<div class="login-footer">
-			<span>没有帐号? <a href="#">点击注册</a></span>
+			<span>没有帐号? <a href="/Register.aspx">点击注册</a></span>
 		</div>
 		</div>
 	</div>

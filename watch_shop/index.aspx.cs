@@ -12,6 +12,7 @@ public partial class index : System.Web.UI.Page
         int cid;
         if (int.TryParse(Request.Params["cid"], out cid))
         {
+            if (cid == 4) cid = 0;
             List<Watch> watchess = WatchServ.GetWatchByCId(cid);
             item_list.DataSource = watchess;
             item_list.DataBind();

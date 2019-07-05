@@ -15,6 +15,9 @@ public partial class PlaceOrder : System.Web.UI.Page
             Response.Redirect("/Login.aspx");
             return;
         }
+        List<Address> addrs = CustomerServ.GetAddressListByCustomerId(customer.Id);
+        address_list.DataSource = addrs;
+        address_list.DataBind();
         customer_balance.Text = customer.Balance.ToString();
         ShoppingCart cart = Session["ShoppingCart"] as ShoppingCart;
         if (cart == null)

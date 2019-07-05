@@ -9,7 +9,12 @@ public class Login : IHttpHandler,IRequiresSessionState {
         context.Response.ContentType = "text/plain";
         string user = context.Request["User"];
         string passwd = context.Request["Password"];
-
+        string checkcode = context.Request["checkcode"];
+        if (context.Session["checkcode"].ToString().ToLower() != checkcode.ToLower())
+        {
+                context.Response.Write("验证码错误");
+                return;
+        }
         Customer customer;
         if (CustomerServ.CheckCustomerPwd(user,passwd,out customer))
         {
@@ -18,7 +23,7 @@ public class Login : IHttpHandler,IRequiresSessionState {
         }
         else
         {
-                context.Response.Write("fail");
+            context.Response.Write("登入失败");
         }
     }
 

@@ -62,12 +62,12 @@ Create table Customers
 	Balance decimal(10,2)
 );
 
---insert into Customers (Name, UserId,UserPwd,Balance)
---values ('管理员','admin','admin',9999999);
---insert into Customers (Name, UserId,UserPwd,Balance)
---values ('Hexo','233@live.ie','123456',9999999);
---insert into Customers (Name, UserId,UserPwd,Balance)
---values ('叶问','test','test',0);
+insert into Customers (Name, UserId,UserPwd,Balance)
+values ('管理员','admin','admin',9999999);
+insert into Customers (Name, UserId,UserPwd,Balance)
+values ('Hexo','233@live.ie','123456',9999999);
+insert into Customers (Name, UserId,UserPwd,Balance)
+values ('叶问','test','test',0);
 
 select * from Customers;
 --delete from Customers;

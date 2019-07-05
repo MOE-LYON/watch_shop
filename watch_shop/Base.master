@@ -32,11 +32,15 @@
                             <a href="index.aspx?cid=3">电子系列</a>
                         </li>
                         <li>
-                            <a href="index.aspx?cid=0">其他</a>
+                            <a href="index.aspx?cid=4">其他</a>
                         </li>
                     </ul>
                 </div>
-                
+                <script>
+                    $(function () {
+
+                    });
+                </script>
                 <div class="user">
                     <span id="islogin" runat="server">
                     <a href="/Login.aspx">登入</a>
@@ -44,6 +48,7 @@
                         </span>
                     <span id="user_view" runat="server">
                         <a href="user.aspx" id="user_name" runat="server"></a>
+                        <a href="/api/logout.ashx"  runat="server">登出</a>
                     </span>
                     <a href="/cart.aspx">购物车(<span id="cartnum" runat="server"></span>)</a>
                 </div>

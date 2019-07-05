@@ -18,6 +18,7 @@ public static class WatchServ
     }
     private static DataSet ConnetSQL()
     {
+        string constr = System.Configuration.ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
         SqlConnection sqlConnection1 = new SqlConnection(constr);
         SqlDataAdapter sqlDataAdapter1 = new SqlDataAdapter("select * from watches", sqlConnection1);
         DataSet dataSet = new DataSet();
@@ -58,12 +59,12 @@ public static class WatchServ
             watch.Photo = row["Photo"].ToString();
             watch.SeriesId = int.Parse(row["SeriesId"].ToString());
             watch.Price = decimal.Parse(row["Price"].ToString());
-            watch.Waterproof = int.Parse(row["Waterproof"].ToString());
+            //watch.Waterproof = int.Parse(row["Waterproof"].ToString());
             watch.Description = row["Description"].ToString();
             watch.Tags = row["Tags"].ToString();
             watch.Sex = row["Sex"].ToString();
-            watch.Movement_model = row["Movement_model"].ToString();
-            watch.Movement_Type = row["Movement_type"].ToString();
+            //watch.Movement_model = row["Movement_model"].ToString();
+            //watch.Movement_Type = row["Movement_type"].ToString();
             watches.Add(watch);
         }
         return watches;
@@ -103,32 +104,5 @@ public static class WatchServ
     {
         return false;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 出于安全 放最后
-    private static string constr = "server=52.229.169.153,2333;database=watch_shop;uid=sa;pwd=Qq1621705106";
 
 }

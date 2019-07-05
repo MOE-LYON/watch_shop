@@ -3,17 +3,40 @@
     <asp:Content ID="Content1" ContentPlaceHolderId="head" runat="server">
         <link rel="stylesheet" href="./style/index.css">
         <script>
-        $(function () {
-            $(".item").click(function () {
-                let id = $(this).find(".watch_id").val();
-                window.location.href = "/detail.aspx?Id=" + id;
+            $(function () {
+                $(".item").click(function () {
+                    let id = $(this).find(".watch_id").val();
+                    window.location.href = "/detail.aspx?Id=" + id;
+                });
+                function getQueryString(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                    var r = window.location.search.substr(1).match(reg);
+                    if (r != null) return unescape(r[2]); return null;
+                }
+                $(".active").removeClass("active");
+                let page = getQueryString("page") || 1;
+                $(".page a").eq(page).addClass("active");
+                const cid = Number(getQueryString('cid'));
+                if (cid != 0) $("header li").eq(cid - 1).find('a').css("color", '#e30505');
+                $(".page a").click(function () {
+                    let page = Number($(this).text());
+                    window.location.href = "/index.aspx?page=" + page;
+                    return false;
+                });
             });
-            function getQueryString(name) { var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); var r = window.location.search.substr(1).match(reg); if (r != null) return unescape(r[2]); return null; }
-            $(".active").removeClass("active");
-            let page = getQueryString("page") || 1;
-            $(".page a").eq(page).addClass("active");
-        })
-    </script>
+        </script>
+        <style>
+            header {
+                position: fixed;
+                width: 100%;
+                top: 0;
+                background-color: white;
+            }
+            .banner {
+                margin-top: 90px;
+            }
+
+        </style>
     </asp:Content>
 
 
@@ -100,14 +123,5 @@
                 <a href="#">4</a>
                 <a href="#" rel="next">下一页 &gt;</a>
             </div>
-            <script>
-                $(function () {
-                    $(".page a").click(function () {
-                        let page = Number($(this).text());
-                        window.location.href = "/index.aspx?page=" + page;
-                        return false;
-                    })
-                })
-            </script>
         </div>
         </asp:Content>

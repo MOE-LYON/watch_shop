@@ -14,11 +14,19 @@ public class Customer
         // TODO: Add constructor logic here
         //
     }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string UserId { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string UserId { get; set; }
     // 按理说用哈希什么的来保存
-        public string UserPwd { get; set; }
-        public decimal Balance { get; set; }
-    
+    public string UserPwd { get; set; }
+    public decimal Balance { get; set; }
+    public int Role { get; set; }
+    public string RoleMap
+    {
+        get
+        {
+            return Roles.GetDes(Role);
+        }
+    }
+
 }

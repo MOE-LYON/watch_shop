@@ -64,5 +64,6 @@ public class Watch
     /// 防水情况
     /// </summary>
     public int Waterproof { get; set; }
+    public string SeriesMap { get { return Series.GetName(SeriesId); } }
 
 }

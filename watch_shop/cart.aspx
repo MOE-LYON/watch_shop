@@ -6,18 +6,20 @@
        $(function(){
            $("label").click(function () {
                let check = !$(this).siblings("input").prop("checked");
-               $(this).siblings("input").prop("checked",check);
+               $(this).siblings("input").prop("checked", check);
+               update();
            });
            $("div.bottom button").click(function () {
                window.location.href = "/PlaceOrder.aspx";
            });
            
-           $(".checkall").click(function () {
-               if ($(this).prop("checked")) {
-                   $("#app > div > div > div > div.con > table > tbody > tr > td.checkbox > input").prop("checked", false);
-               } else {
+           $(".checkall").parent().click(function (e) {             
+                if ($(".checkall").prop("checked")) {
                    $("#app > div > div > div > div.con > table > tbody > tr > td.checkbox > input").prop("checked", true);
-               }
+               } else {
+                   $("#app > div > div > div > div.con > table > tbody > tr > td.checkbox > input").prop("checked", false);
+                }
+                update();
            });
            $(".checkall").prop("checked", true);
            $("#app > div > div > div > div.con > table > tbody > tr > td.checkbox > input").prop("checked", true);
@@ -92,7 +94,6 @@
                     <div class="top flex">
                         <div class="flex">
                             <h2>我的购物车</h2>
-                            <p>共<span class="watch-num">1</span>门，已选择<span class="choice-num">1</span>门</p>
                         </div>
                         <div style="line-height: 120px;">
                             <a href="javascript:void(0)">我的订单历史</a>
@@ -121,7 +122,7 @@
                                     <td><%# Eval("Name") %></td>
                                     <td class="price">￥<%# Eval("Price") %></td>
                                     <td class="count">
-                                        <span class="reduce"></span>
+                                        <span class="reduce">-</span>
                                         <input class="count-input" type="text" value="<%# Eval("Quantity") %>">
                                         <span class="add">+</span>
                                     </td>
