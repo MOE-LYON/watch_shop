@@ -1,0 +1,129 @@
+﻿@charset "utf-8";
+@import url(common.css);
+
+
+
+.left {
+    margin-right: 30px;
+    min-width: 40%;
+}
+
+.right > div {
+    margin-bottom: 20px;
+}
+
+.right .con {
+    padding: 20px;
+    background-color: rgba(236, 236, 236, 0.945);
+    padding-top: 5px;
+}
+
+    .right .con .con-price {
+        color: red;
+        margin-left: 10px;
+        font-size: 28px;
+    }
+
+    .right .con .flex {
+        justify-content: space-between;
+    }
+
+        .right .con .flex * {
+            align-self: center;
+        }
+
+    .right .con p {
+        margin-bottom: 10px;
+    }
+
+.con-credit {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.right .num span {
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    background-color: #eee;
+    padding: 0 10px;
+}
+
+.descres {
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.right .num input {
+    outline: none;
+    border: none;
+    width: 45px;
+    /* border-bottom: 1px solid black; */
+    text-align: center;
+    border: 1px solid rgb(179, 137, 241);
+    height: 25px;
+}
+
+.right .bottom {
+    margin-top: 100px;
+}
+
+    .right .bottom button {
+        text-align: center;
+        display: inline-block;
+        padding: 10px 30px;
+        background-color: black;
+        color: white;
+        border: none;
+        cursor:pointer;
+    }
+
+        .right .bottom button.dingzhi {
+            background-color: red;
+        }
+.right .colors span {
+    margin-left: 20px;
+    width: 30px;
+    display: inline-block;
+    height: 30px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.right .colors .active {
+    border: 2px solid red;
+}
+.main {
+    padding-bottom: 50px;
+    margin-top: 20px;
+}
+.left {
+    border: 1px solid rgb(201, 200, 200);
+    position: relative;
+}
+
+    .left img {
+        display: block;
+        margin: 0 auto;
+        width:350px;
+        height:400px;
+    }
+
+    .left .buy {
+        /*position: absolute;*/
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        margin-top:10px;
+    }
+
+        .left .buy h3 {
+            text-align: center;
+            border-bottom: 1px solid rgb(221, 144, 0);
+            padding-bottom: 5px;
+        }
+
+        .left .buy p {
+            margin: 10px 0;
+        }
