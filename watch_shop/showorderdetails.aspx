@@ -6,6 +6,8 @@
 <head >
     
     <title>订单详细</title>
+        <script src="admin/js/jquery.min.js" async="async"></script>
+    <link  rel="stylesheet" href="admin/lib/layui/css/layui.css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -42,25 +44,19 @@
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table runat="server">
-                    <tr runat="server">
                         <td runat="server">
-                            <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                            <table id="itemPlaceholderContainer" runat="server" border="0"  class="layui-table">
                                 <tr runat="server" style="">
-                                    <th runat="server">orderid</th>
-                                    <th runat="server">num</th>
-                                    <th runat="server">price</th>
-                                    <th runat="server">watch_id</th>
+                                    <th runat="server">订单id</th>
+                                    <th runat="server">数量</th>
+                                    <th runat="server">价格</th>
+                                    <th runat="server">商品id</th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
                                 </tr>
                             </table>
                         </td>
                     </tr>
-                    <tr runat="server">
-                        <td runat="server" style=""></td>
-                    </tr>
-                </table>
             </LayoutTemplate>
             
         </asp:ListView>

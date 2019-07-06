@@ -21,7 +21,7 @@
         <![endif]-->
         <script>
             // 是否开启刷新记忆tab功能
-            var is_remember = false;
+            //var is_remember = false;
         </script>
     </head>
     <body class="index">
@@ -44,7 +44,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item to-index">
-                    <a href="/index.aspx">前台首页</a></li>
+                    <a href="/index.aspx"  target="_blank">前台首页</a></li>
             </ul>
         </div>
         <!-- 顶部结束 -->

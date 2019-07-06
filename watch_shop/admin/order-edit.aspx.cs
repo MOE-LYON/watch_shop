@@ -18,5 +18,7 @@ public partial class admin_order_edit : System.Web.UI.Page
         date.Value = orders.date.ToLongDateString();
         username.Value = orders.Customers_id.ToString();
         price.Value = orders.Totalprice.ToString();
+        status.Value = orders.Status;
+        order_id.Value = orders.orderid;
     }
 }

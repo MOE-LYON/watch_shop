@@ -33,6 +33,15 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
+                        <label for="order_id" class="layui-form-label">
+                            <span class="x-red">*</span>订单id
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="order_id" name="orderid" required lay-verify="required" autocomplete="off" class="layui-input layui-disabled" runat="server" disabled />
+                            
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
                         <label for="phone" class="layui-form-label">
                             <span class="x-red">*</span>下单时间</label>
                         <div class="layui-input-inline">
@@ -52,10 +61,10 @@
                             <span class="x-red">*</span>状态</label>
                         <div class="layui-input-inline">
                             <select id="status" name="status" runat="server" class="layui-select valid">
-                                <option value="0">未付款</option>
-                                <option value="1">发货</option>
-                                <option value="2">评价</option>
-                                <option value="3">交易完成</option>
+                                <option value="未付款">未付款</option>
+                                <option value="待收货">发货</option>
+                                <option value="待评价">评价</option>
+                                <option value="交易完成">交易完成</option>
 
                             </select>
                         </div>
@@ -66,12 +75,12 @@
                     <div class="layui-form-item layui-form-text">
                         <label for="desc" class="layui-form-label">描述</label>
                         <div class="layui-input-block">
-                            <textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea"></textarea>
+                            <textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea" style="width:37%"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label"></label>
-                        <button class="layui-btn" lay-filter="add" lay-submit="">增加</button>
+                        <button class="layui-btn" lay-filter="add" lay-submit="" runat="server">确认</button>
                     </div>
                 </form>
             </div>
@@ -101,17 +110,38 @@
                 //监听提交
                 form.on('submit(add)',
                 function (data) {
-                    console.log(data);
-                    //发异步，把数据提交给php
-                    layer.alert("增加成功", {
-                        icon: 6
-                    },
+                    let id = $("#order_id").val().trim();
+                    let price = $("#price").val().trim();
+                    let status = $("#status").val().trim();
+                    $.ajax({
+                        type: "post",
+                        url: "/api/updateorders.ashx",
+                        data: { id, price, status},
+                        success: function (res) {
+                            if (res == "success") {
+                                layer.alert("操作成功", {
+                                    icon: 6
+                                },
                     function () {
                         // 获得frame索引
                         var index = parent.layer.getFrameIndex(window.name);
                         //关闭当前frame
                         parent.layer.close(index);
                     });
+                            } else {
+                                layer.alert("操作失败 :" + res, {
+                                    icon: 5
+                                },
+                    function () {
+                        // 获得frame索引
+                        var index = parent.layer.getFrameIndex(window.name);
+                        //关闭当前frame
+                        parent.layer.close(index);
+                    });
+                            }
+                        }
+                    })
+                    
                     return false;
                 });
 
