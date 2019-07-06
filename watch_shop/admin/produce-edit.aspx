@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="./css/xadmin.css">
     <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script src="https://cdn.tiny.cloud/1/umd14fdhgt2cop3u70eg1t6anz6oj1mp42b1g1qrg1qij4hp/tinymce/5/tinymce.min.js"></script>
+    <script>
+  tinymce.init({
+      selector: '#watch_descr'
+  });
+  </script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
             <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -93,7 +99,7 @@
                     <div class="layui-form-item">
                         <label for="L_repass" class="layui-form-label">
                             <span class="x-red">*</span>商品描述</label>
-                        <div class="layui-input-inline">
+                        <div class="layui-input-inline" style="width:auto">
                             <textarea class="layui-textarea" name="desc" id="watch_descr" runat="server"></textarea>
                         </div>
                         <div class="layui-form-item">
@@ -110,7 +116,7 @@
                 var form = layui.form,
                 layer = layui.layer,
                 upload = layui.upload;
-
+                $(".tox-statusbar__branding a").remove();
                 //监听提交
                 form.on('submit(add)',
                 function (data) {
